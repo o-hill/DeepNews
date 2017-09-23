@@ -35,6 +35,7 @@ export default {
     },
     methods: {
       mapIsLoaded () {
+        $emit('map-is-loaded', window.google)
         console.log("Map finished loading")
         this.google = window.google
       },
