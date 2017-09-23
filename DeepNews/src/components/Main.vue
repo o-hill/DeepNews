@@ -8,7 +8,7 @@
     >
       <v-text-field id="search"></v-text-field>
     </v-toolbar>
-    <google-map>
+    <google-map @map-is-loaded="">
     </google-map>
     <sidebar></sidebar>
   </div>
@@ -18,8 +18,6 @@
 import GoogleMap from './Map.vue'
 import Sidebar from './Sidebar.vue'
 
-var autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('search'));
-
 export default {
   components: {
     GoogleMap,
@@ -27,6 +25,12 @@ export default {
   },
   data () {
     return {
+    }
+  },
+
+  methods: {
+    enable_autocomplete(google) {
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search'));
     }
   }
 }
