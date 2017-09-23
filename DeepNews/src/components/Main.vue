@@ -18,8 +18,6 @@
 import GoogleMap from './Map.vue'
 import Sidebar from './Sidebar.vue'
 
-var autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('search'));
-
 export default {
   components: {
     GoogleMap,
