@@ -31,15 +31,9 @@ export default {
       currentLocation: {}
     }
   },
-
   methods: {
-    // enable_autocomplete(google) {
-    //   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search'));
-    // },
     update_view(response) {
-      debugger;
       this.currentLocation = response.geometry.location;
-      debugger;
     }
   }
 }
