@@ -1,12 +1,5 @@
 <template>
-  <div>
-    <v-toolbar
-      class = "white"
-      floating
-      dense
-      >
-       <v-text-field prepend-icon="search" hide-details single-line></v-text-field>
-    </v-toolbar>
+  <div class="google-map-wrapper">
     <google-map>
     </google-map>
   </div>
@@ -22,5 +15,12 @@ export default {
 </script>
 
 <style>
+.google-map-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 </style>
