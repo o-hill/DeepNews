@@ -1,26 +1,55 @@
 <template>
-  <div class="google-map-wrapper">
-    <google-map>
+  <div class="main-wrapper">
+    <v-toolbar
+      id="bar"
+      class = "white"
+      floating
+      dense
+    >
+      <v-text-field id="search"></v-text-field>
+    </v-toolbar>
+    <google-map @map-is-loaded="">
     </google-map>
+    <sidebar></sidebar>
   </div>
 </template>
 
 <script>
 import GoogleMap from './Map.vue'
+import Sidebar from './Sidebar.vue'
+
 export default {
   components: {
-    GoogleMap
+    GoogleMap,
+    Sidebar
+  },
+  data () {
+    return {
+    }
+  },
+
+  methods: {
+    enable_autocomplete(google) {
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search'));
+    }
   }
 }
 </script>
 
 <style>
-.google-map-wrapper {
+.main-wrapper {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+#bar {
+  position: absolute;
+  z-index: 1;
+  margin: 10px;
+  top: 10px;
 }
 
 </style>
