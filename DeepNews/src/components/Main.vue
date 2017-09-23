@@ -9,7 +9,7 @@
       <!-- <v-text-field id="search" @place_changed="update_view"></v-text-field> -->
       <gmap-autocomplete @place_changed="update_view"></gmap-autocomplete>
     </v-toolbar>
-    <google-map :current-location="currentLocation" @map-is-loaded="enable_autocomplete">
+    <google-map :current-location="currentLocation">
     </google-map>
     <sidebar></sidebar>
   </div>
@@ -51,7 +51,7 @@ export default {
 #bar {
   position: absolute;
   z-index: 1;
-  margin: 10px;
+  left: 10px;
   top: 10px;
 }
 

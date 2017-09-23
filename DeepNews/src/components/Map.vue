@@ -66,6 +66,7 @@ export default {
 .vue-map-container {
   width: 75%;
   height: 100%;
+  display: inline-block;
 }
 
 </style>
