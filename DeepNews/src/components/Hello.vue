@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <map></map>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -21,8 +22,13 @@
 </template>
 
 <script>
+import Map from './Map.vue'
+
 export default {
   name: 'hello',
+  components: {
+    Map
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
