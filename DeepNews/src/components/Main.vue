@@ -1,5 +1,11 @@
 <template>
   <div class="google-map-wrapper">
+    <v-toolbar
+      class="white"
+      floating
+      dense>
+      <v-text-field></v-text-field>
+    </v-toolbar>
     <google-map>
     </google-map>
   </div>
