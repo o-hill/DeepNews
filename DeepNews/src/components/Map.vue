@@ -38,9 +38,9 @@ export default {
     },
     watch: {
       currentLocation (newLocation) {
-        panToLocation(newLocation)
+        this.panToLocation(newLocation)
       }
-    }
+    },
     methods: {
       mapIsLoaded () {
         this.$emit('map-is-loaded', window.google)
