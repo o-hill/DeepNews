@@ -1,21 +1,24 @@
 <template>
-  <div class="google-map-wrapper">
+  <div class="main-wrapper">
     <google-map>
     </google-map>
+    <sidebar></sidebar>
   </div>
 </template>
 
 <script>
 import GoogleMap from './Map.vue'
+import Sidebar from './Sidebar.vue'
 export default {
   components: {
-    GoogleMap
+    GoogleMap,
+    Sidebar
   }
 }
 </script>
 
 <style>
-.google-map-wrapper {
+.main-wrapper {
   position: absolute;
   top: 0;
   bottom: 0;
