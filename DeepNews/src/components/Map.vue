@@ -41,7 +41,6 @@ export default {
         this.panToLocation(newLocation)
       }
     },
-
     methods: {
       mapIsLoaded () {
         this.$emit('map-is-loaded', window.google)
@@ -67,6 +66,7 @@ export default {
 .vue-map-container {
   width: 75%;
   height: 100%;
+  display: inline-block;
 }
 
 </style>
