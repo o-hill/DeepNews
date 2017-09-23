@@ -19,6 +19,10 @@ export default {
   components: {
     GoogleMap,
     Sidebar
+  },
+  data () {
+    return {
+    }
   }
 }
 </script>
