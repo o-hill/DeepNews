@@ -14,14 +14,18 @@
 </template>
 
 <script>
+
 import * as VueGoogleMaps from 'vue2-google-maps';
 import Vue from 'vue';
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g'
+    key: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g',
+    libraries: places
   }
 });
+
+
 export default {
     data () {
       return {
