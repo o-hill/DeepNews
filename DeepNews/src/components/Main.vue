@@ -8,7 +8,7 @@
     >
       <v-text-field id="search"></v-text-field>
     </v-toolbar>
-    <google-map>
+    <google-map @map-is-loaded="enable_autocomplete">
     </google-map>
     <sidebar></sidebar>
   </div>
@@ -25,6 +25,12 @@ export default {
   },
   data () {
     return {
+    }
+  },
+
+  methods: {
+    enable_autocomplete(google) {
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search'));
     }
   }
 }
