@@ -40,7 +40,8 @@ export default {
       currentLocation (newLocation) {
         panToLocation(newLocation)
       }
-    }
+    },
+    
     methods: {
       mapIsLoaded () {
         this.$emit('map-is-loaded', window.google)

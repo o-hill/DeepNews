@@ -33,11 +33,13 @@ export default {
   },
 
   methods: {
-    enable_autocomplete(google) {
-      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search'));
-    },
+    // enable_autocomplete(google) {
+    //   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search'));
+    // },
     update_view(response) {
-      currentLocation = response.geometry.location;
+      debugger;
+      this.currentLocation = response.geometry.location;
+      debugger;
     }
   }
 }
