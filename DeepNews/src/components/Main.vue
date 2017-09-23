@@ -6,9 +6,10 @@
       floating
       dense
     >
-      <v-text-field id="search"></v-text-field>
+      <!-- <v-text-field id="search" @place_changed="update_view"></v-text-field> -->
+      <gmap-autocomplete @place_changed="update_view"></gmap-autocomplete>
     </v-toolbar>
-    <google-map @map-is-loaded="enable_autocomplete">
+    <google-map :current-location="currentLocation" @map-is-loaded="enable_autocomplete">
     </google-map>
     <sidebar></sidebar>
   </div>
@@ -17,20 +18,26 @@
 <script>
 import GoogleMap from './Map.vue'
 import Sidebar from './Sidebar.vue'
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 export default {
   components: {
     GoogleMap,
-    Sidebar
+    Sidebar,
+    VueGoogleMaps
   },
   data () {
     return {
+      currentLocation: {}
     }
   },
 
   methods: {
     enable_autocomplete(google) {
       var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search'));
+    },
+    update_view(response) {
+      currentLocation = response.geometry.location;
     }
   }
 }
