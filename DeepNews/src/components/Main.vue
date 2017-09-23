@@ -1,10 +1,11 @@
 <template>
   <div class="google-map-wrapper">
     <v-toolbar
-      class="white"
+      class = "white"
       floating
-      dense>
-      <v-text-field></v-text-field>
+      dense
+      >
+      <v-text-field id="search"></v-text-field>
     </v-toolbar>
     <google-map>
     </google-map>
@@ -23,10 +24,14 @@ export default {
 <style>
 .google-map-wrapper {
   position: absolute;
-  top: 0;
+  top: 30px;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+#search {
+  z-index: 1;
 }
 
 </style>
