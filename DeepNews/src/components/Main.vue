@@ -8,7 +8,7 @@
     >
       <v-text-field id="search"></v-text-field>
     </v-toolbar>
-    <google-map @map-is-loaded="">
+    <google-map @map-is-loaded="enable_autocomplete">
     </google-map>
     <sidebar></sidebar>
   </div>
