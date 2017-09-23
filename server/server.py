@@ -5,6 +5,7 @@ from time import time, sleep
 from flask_restful import abort, Api, Resource, reqparse
 from flask_cors import *
 from serial import *
+from news_queries import query_nyt
 
 
 # -----------------------------------------------------------------------------
@@ -30,3 +31,44 @@ class NewsQuery(Resource):
         response = query_nyt(data)
 
         return serialize(response)
+
+
+
+
+
+
+
+# -----------------------------------------------------------------------------
+
+# Define API routes.
+
+api.add_resource(NewsQuery, '/query', methods = ['GET'])
+
+
+
+
+# -----------------------------------------------------------------------------
+
+
+
+
+if __name__ == '__main__':
+    # Launch the server!
+
+    app.run(port=1492, debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# -----------------------------------------------------------------------------
