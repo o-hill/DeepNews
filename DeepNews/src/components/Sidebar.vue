@@ -8,8 +8,19 @@
 <script>
 export default {
   name: 'sidebar',
+  props: ['gcResp'],
   data () {
     return {
+      currentNews: {}
+    }
+  },
+  watch: {
+    gcResp (newResp) {
+      this.buildQuery(newResp)
+    }
+  },
+  methods: {
+    buildQuery (resp) {
 
     }
   }
