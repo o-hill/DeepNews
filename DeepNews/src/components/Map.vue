@@ -1,6 +1,7 @@
 <template>
   <gmap-map
     :center="center"
+    ref="map"
     :zoom="7"
     @dragend="mapViewChanged"
     @tilesloaded="mapIsLoaded">
@@ -22,6 +23,7 @@ export default {
     components: {
       VueGoogleMaps
     },
+    props: ['currentLocation'],
     data () {
       return {
         center: {lat: 10.0, lng: 10.0},
@@ -30,17 +32,27 @@ export default {
         }, {
           position: {lat: 11.0, lng: 11.0}
         }],
-        google: {}
+        google: {},
+        mapObject: {}
       }
     },
+    watch: {
+      currentLocation (newLocation) {
+        panToLocation(newLocation)
+      }
+    }
     methods: {
       mapIsLoaded () {
-        $emit('map-is-loaded', window.google)
+        this.$emit('map-is-loaded', window.google)
         console.log("Map finished loading")
         this.google = window.google
+        this.mapObject = this.$refs.map.$mapObject
       },
       mapViewChanged () {
-        console.log(window.google)
+        this.panToLocation(10, 0)
+      },
+      panToLocation (latlng) {
+        this.mapObject.panTo(latlng)
       },
       reverseGeocode (lat, lng) {
 
