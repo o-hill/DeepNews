@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <map></map>
+    <google-map></google-map>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -22,12 +22,12 @@
 </template>
 
 <script>
-import Map from './Map.vue'
+import GoogleMap from './Map.vue'
 
 export default {
   name: 'hello',
   components: {
-    Map
+    GoogleMap
   },
   data () {
     return {

@@ -1,38 +1,40 @@
 <template>
-  <div id='google-map'></div>
+  <gmap-map
+    :center="center"
+    :zoom="7"
+    style="width: 500px; height: 300px">
+    <gmap-marker
+      :key="index"
+      v-for="(m, index) in markers"
+      :position="m.position"
+      :clickable="true"
+      :draggable="true"
+      @click="center=m.position">
+    </gmap-marker>
+  </gmap-map>
 </template>
 
 <script>
-export default {
-  name: 'google-map',
-  mounted () {
-    loadScript()
-  },
-  data () {
-    return {
-      map: '',
-      key: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g',
-      url: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g&callback=initialize'
-    }
-  },
-  methods: {
-    initialize () {
-      let latlng = new google.maps.LatLng(0.00, 0.00)
-      let config = {
-        zoom: 10,
-        center: latlng
-      },
-      map = new google.maps.Map(document.getElementById('map'))
-    },
+import * as VueGoogleMaps from 'vue2-google-maps';
+import Vue from 'vue';
 
-    loadScript () {
-      let script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = this.url
-      document.body.appendChild(script)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g'
+  }
+});
+export default {
+    data () {
+      return {
+        center: {lat: 10.0, lng: 10.0},
+        markers: [{
+          position: {lat: 10.0, lng: 10.0}
+        }, {
+          position: {lat: 11.0, lng: 11.0}
+        }]
+      }
     }
   }
-}
 </script>
 
 <style>
