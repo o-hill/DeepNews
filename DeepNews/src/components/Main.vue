@@ -53,6 +53,7 @@ export default {
   z-index: 1;
   margin: 10px;
   top: 10px;
+  left: 10px;
 }
 
 </style>

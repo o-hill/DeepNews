@@ -41,10 +41,7 @@ export default {
         this.panToLocation(newLocation)
       }
     },
-<<<<<<< HEAD
-    
-=======
->>>>>>> 3a083e432be6ccdb8ef0f667953bac05e54323f1
+
     methods: {
       mapIsLoaded () {
         this.$emit('map-is-loaded', window.google)
