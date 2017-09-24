@@ -9,13 +9,13 @@
           <v-card class = "white mb-3 mr-3">
             <v-layout row wrap>
               <!-- <v-flex xs5> -->
-                <v-card-media>
+                <v-card-media v-if="getImageUrl(article)">
                   <img :src = "getImageUrl(article)" height = 250px width=160px>
                 </v-card-media>
               <!-- </v-flex> -->
               <!-- <v-flex xs7> -->
               <v-card-text>
-                  <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a>
+                  <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a><br></br>
                   <div id="arttext">{{article.snippet}}</div>
               </v-card-text>
               <!-- </v-flex> -->
@@ -103,6 +103,7 @@ export default {
           return "https://www.nytimes.com/" + images[i].url
         }
       }
+      return ""
     }
   }
 }
