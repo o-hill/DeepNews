@@ -370,7 +370,8 @@ export default {
 
 <style>
 .vue-map-container {
-  width: 75%;
+  float: left;
+  width: 67%;
   height: 100%;
   display: inline-block;
 }

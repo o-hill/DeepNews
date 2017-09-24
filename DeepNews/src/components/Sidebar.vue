@@ -4,25 +4,22 @@
     <v-container>
       <ul>
         <v-flex xs12 v-for="article in articles">
-          <v-card>
-            <v-card-media>
-              <img :src = "article.image" height = 200px>
-            </v-card-media>
-            <v-card-title primary-title>
-              <div>
-                <h3>{{article.headline}}</h3>
-              </div>
-            </v-card-title>
-            <v-card-actions>
-                <v-btn dark icon='icon' @click.native="show = !show">
-                  <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-              <v-slide-y-transition>
-                <v-card-text v-if="show">
-                  {{article.text}}
-                </v-card-text>
-              </v-slide-y-transition>
+          <v-card class = "white mb-3 mr-3">
+            <v-layout row wrap>
+              <v-flex xs4>
+                <v-card-media>
+                  <img :src = "article.image" height = 150px>
+                </v-card-media>
+              </v-flex>
+              <v-flex xs8>
+              <v-card-text>
+                  <a :href="article.image"><h6>{{article.headline}}</h6></a>
+              </v-card-text>
+              <v-card-text class="grey--text">
+                <div id="arttext">{{article.text}}</div>
+              </v-card-text>
+              </v-flex>
+            </v-layout>
           </v-card>
         </v-flex>
       </ul>
@@ -104,11 +101,27 @@ export default {
 
 <style>
 #sidebar-container {
-  width: 24%;
+  float: right;
+  width: 33%;
   height: 100%;
-  background-color: #888888;
+  background-color: #666666;
   display: inline-block;
   overflow-y: scroll;
 }
+
+h6 {
+  float: left;
+  color: black;
+}
+
+h6:hover {
+  color: grey;
+}
+
+#arttext {
+  position: absolute;
+  left: 39%;
+}
+
 
 </style>

@@ -6,6 +6,8 @@
       floating
       dense
     >
+    <v-icon class="mr-3">search</v-icon>
+    <v-spacer></v-spacer>
       <!-- <v-text-field id="search" @place_changed="update_view"></v-text-field> -->
       <gmap-autocomplete @place_changed="update_view"></gmap-autocomplete>
     </v-toolbar>
