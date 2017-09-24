@@ -11,10 +11,8 @@
           </div>
         </v-card-title>
         <v-card-actions>
-            <v-btn icon @click.native="show = !show">
-              <!-- <v-icon v-if="show">arrow_downward</v-icon>
-              <v-icon v-else>arrow_upward</v-icon> -->
-              <v-icon>{{ show ? arrow_downward : arrow_upward }}</v-icon>
+            <v-btn dark icon='icon' @click.native="show = !show">
+              <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
             </v-btn>
           </v-card-actions>
           <v-slide-y-transition>
@@ -31,7 +29,6 @@
 
 <script>
   export default{
-    //props: ['headline', 'image', 'text']
     data: () => {
       return {
         headline: 'Hills hills hills',
@@ -43,9 +40,3 @@
 
   }
 </script>
-
-
-<style>
-div {
-}
-</style>
