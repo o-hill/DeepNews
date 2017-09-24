@@ -73,7 +73,7 @@ export default {
         data: {
           apikey: this.api,
           q: queryString,
-          sort: 'newest',
+          sort: 'relevance',
           page: page
         },
         crossDomain: true,
