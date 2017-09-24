@@ -15,6 +15,7 @@ export default {
   props: ['gcResp'],
   data () {
     return {
+<<<<<<< HEAD
       currentNews: {},
       articles: [
         {
@@ -26,6 +27,9 @@ export default {
           headline: "rock climbing"
         }
       ]
+=======
+      currentNews: []
+>>>>>>> e4c3b77d78b65903acb8449424bb324af9445698
     }
   },
   watch: {
@@ -36,6 +40,15 @@ export default {
   methods: {
     buildQuery (resp) {
 
+    },
+    parseResponse (respJson) {
+      respObj = JSON.parse(respJson)
+      snippets = respObj.response.docs
+      this.currentNews = []
+      snippets.forEach( (snippet) => {
+        this.currentNews.push(snippet)
+      })
+      console.log(this.currentNews)
     }
   }
 }
