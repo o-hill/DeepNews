@@ -356,6 +356,7 @@ export default {
         this.mapObject = this.$refs.map.$mapObject
       },
       mapViewChanged () {
+        this.$emit('map-location-changed', this.mapObject.getCenter())
       },
       panToLocation (latlng) {
         this.mapObject.panTo(latlng)
