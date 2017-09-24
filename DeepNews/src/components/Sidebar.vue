@@ -11,7 +11,7 @@ export default {
   props: ['gcResp'],
   data () {
     return {
-      currentNews: {}
+      currentNews: []
     }
   },
   watch: {
@@ -22,6 +22,15 @@ export default {
   methods: {
     buildQuery (resp) {
 
+    },
+    parseResponse (respJson) {
+      respObj = JSON.parse(respJson)
+      snippets = respObj.response.docs
+      this.currentNews = []
+      snippets.forEach( (snippet) => {
+        this.currentNews.push(snippet)
+      })
+      console.log(this.currentNews)
     }
   }
 }
