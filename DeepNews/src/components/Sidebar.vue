@@ -27,12 +27,16 @@
 </template>
 
 <script>
+import Card from './Card.vue'
+
 export default {
   name: 'sidebar',
+  components: {
+    Card
+  },
   props: ['gcResp'],
   data () {
     return {
-      currentNews: {},
       articles: [
         {
           headline: "Rocks",
@@ -45,6 +49,7 @@ export default {
           image: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Chocolate_Hills.jpg'
         }
       ],
+      currentNews: [],
       show: false
     }
   },

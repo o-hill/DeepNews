@@ -34,7 +34,7 @@ class NewsQuery(Resource):
 
         return serialize(response)
 
-class TestJson(Resouce):
+class TestJson(Resource):
 
     def get(self):
         data = open('request.json', 'r').read()
