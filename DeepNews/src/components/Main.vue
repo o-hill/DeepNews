@@ -8,7 +8,7 @@
     >
     <v-icon class="mr-3">search</v-icon>
     <v-spacer></v-spacer>
-      <gmap-autocomplete @place_changed="update_view"></gmap-autocomplete>
+      <gmap-autocomplete @place_changed="update_view" width=100px></gmap-autocomplete>
     </v-toolbar>
     <google-map
       :current-location="currentLocation">
@@ -86,12 +86,17 @@ export default {
   position: absolute;
   z-index: 1;
   left: 10px;
-  top: 10px;
+  top: 20px;
   left: 10px;
+  width: 300px;
 }
 
 body {
   overflow: hidden;
+}
+
+input[type=text] {
+  width: 225px;
 }
 
 </style>

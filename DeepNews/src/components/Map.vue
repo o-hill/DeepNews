@@ -5,8 +5,7 @@
     :zoom="8"
     :options="{styles: styles,
       disableDefaultUI: true,
-      mapTypeId: 'terrain',
-      zoomControl: true}"
+      mapTypeId: 'terrain'}"
     @dragend="mapViewChanged"
     @tilesloaded="mapIsLoaded">
   </gmap-map>
@@ -346,6 +345,10 @@ export default {
     watch: {
       currentLocation (newLocation) {
         this.panToLocation(newLocation)
+        new this.google.maps.Marker({
+          position: newLocation,
+          map: this.mapObject
+        })
       }
     },
     methods: {
@@ -372,7 +375,7 @@ export default {
 <style>
 .vue-map-container {
   float: left;
-  width: 67%;
+  width: 100%;
   height: 100%;
   display: inline-block;
 }
