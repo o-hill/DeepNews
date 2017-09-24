@@ -130,7 +130,7 @@ h6:hover {
 #arttext {
   text-align: left;
   line-height: 120%;
-  margin-top: 20px;
+  vertical-align: top;
 }
 
 
