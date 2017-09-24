@@ -3,20 +3,20 @@
     <button v-on:click="testQuery">Test</button>
     <v-container>
       <ul>
-        <v-flex xs12 v-for="article in articles">
+        <v-flex xs12 v-for="article in currentNews">
           <v-card class = "white mb-3 mr-3">
             <v-layout row wrap>
               <v-flex xs4>
                 <v-card-media>
-                  <img :src = "article.image" height = 150px>
+                  <img :src = "getImageUrl(article)" height = 150px width=120px>
                 </v-card-media>
               </v-flex>
               <v-flex xs8>
               <v-card-text>
-                  <a :href="article.image"><h6>{{article.headline}}</h6></a>
+                  <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a>
               </v-card-text>
               <v-card-text class="grey--text">
-                <div id="arttext">{{article.text}}</div>
+                <div id="arttext">{{article.snippet}}</div>
               </v-card-text>
               </v-flex>
             </v-layout>
@@ -86,13 +86,20 @@ export default {
     },
     parseResponse (respJson) {
       console.log('ss')
-      debugger
       let snippets = respJson.response.docs
       this.currentNews = []
       snippets.forEach( (snippet) => {
         this.currentNews.push(snippet)
       })
       console.log(this.currentNews)
+    },
+    getImageUrl (article) {
+      let images = article.multimedia
+      for(let i = 0; i < images.length; ++i) {
+        if(images[i].subtype === "xlarge") {
+          return "https://www.nytimes.com/" + images[i].url
+        }
+      }
     }
   }
 }
@@ -119,8 +126,9 @@ h6:hover {
 }
 
 #arttext {
-  position: absolute;
-  left: 39%;
+  text-align: left;
+  line-height: 120%;
+  margin-top: 20px;
 }
 
 
