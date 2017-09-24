@@ -16,9 +16,7 @@
               <!-- <v-flex xs7> -->
               <v-card-text>
                   <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a>
-              </v-card-text>
-              <v-card-text class="grey--text">
-                <div id="arttext">{{ article.snippet }}</div>
+                  <div id="arttext">{{article.snippet}}</div>
               </v-card-text>
               <!-- </v-flex> -->
             </v-layout>
@@ -133,6 +131,7 @@ h6:hover {
 }
 
 #arttext {
+  color: grey;
   text-align: left;
   line-height: 120%;
   vertical-align: top;
