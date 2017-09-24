@@ -1,5 +1,6 @@
 <template>
   <div id="sidebar-container">
+    <button v-on:click="testQuery">Test</button>
     <v-container>
       <ul>
         <v-flex xs12 v-for="article in articles">
@@ -31,6 +32,7 @@
 
 <script>
 import Card from './Card.vue'
+import jQuery from 'jQuery'
 
 export default {
   name: 'sidebar',
@@ -53,7 +55,9 @@ export default {
         }
       ],
       currentNews: [],
-      show: false
+      show: false,
+      api: "eb7c9ef23d6343dbbb7ba47b1d760610",
+      articleSearchUrl: "https://api.nytimes.com/svc/search/v2/articlesearch.json"
     }
   },
   watch: {
@@ -65,9 +69,28 @@ export default {
     buildQuery (resp) {
 
     },
+    testQuery () {
+      console.log('test')
+      let that = this;
+      jQuery.ajax({
+        url: this.articleSearchUrl,
+        data: {
+          apikey: this.api,
+          q: "Ann Arbor"
+        },
+        crossDomain: true,
+        xhrFields: {
+          withCredentials: true
+        },
+        complete (response) {
+          that.parseResponse(response.responseJSON)
+        }
+      })
+    },
     parseResponse (respJson) {
-      respObj = JSON.parse(respJson)
-      snippets = respObj.response.docs
+      console.log('ss')
+      debugger
+      let snippets = respJson.response.docs
       this.currentNews = []
       snippets.forEach( (snippet) => {
         this.currentNews.push(snippet)

@@ -30,6 +30,8 @@ class NewsQuery(Resource):
     def get(self):
         data = request.json
         data = deserialize(data)
+        for k, v in data.items():
+            print(str(k) + ": " + str(v))
         response = query_nyt(data)
 
         return serialize(response)
@@ -37,7 +39,9 @@ class NewsQuery(Resource):
 class TestJson(Resource):
 
     def get(self):
-        data = open('request.json', 'r').read()
+        data = open('./testData.json', 'r').read()
+        data = data.replace("'", '"')
+        print(data)
         return data
 
 
