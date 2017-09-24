@@ -111,6 +111,8 @@ export default {
         mm='0'+mm;
       }
       return yyyy+'-'+mm+'-'+dd;
+    },
+    randomCity() {
     }
   }
 }

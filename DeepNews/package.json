@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
     "jquery": "^3.2.1",
     "vue": "^2.4.2",
     "vue-material-design-icons": "^0.7.1",
