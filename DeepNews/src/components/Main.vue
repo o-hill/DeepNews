@@ -8,12 +8,13 @@
     >
     <v-icon class="mr-3">search</v-icon>
     <v-spacer></v-spacer>
-      <!-- <v-text-field id="search" @place_changed="update_view"></v-text-field> -->
       <gmap-autocomplete @place_changed="update_view"></gmap-autocomplete>
     </v-toolbar>
-    <google-map :current-location="currentLocation">
+    <google-map
+      :current-location="currentLocation">
     </google-map>
-    <sidebar></sidebar>
+    <sidebar
+      :query-string="queryString"></sidebar>
   </div>
 </template>
 
@@ -30,11 +31,13 @@ export default {
   },
   data () {
     return {
-      currentLocation: {}
+      currentLocation: {},
+      queryString: ''
     }
   },
   methods: {
     update_view(response) {
+      this.queryString = response.address_components[0].long_name
       this.currentLocation = response.geometry.location;
     }
   }

@@ -1,6 +1,5 @@
 <template>
   <div id="sidebar-container">
-    <button v-on:click="testQuery">Test</button>
     <v-container>
       <ul>
         <v-flex xs12 v-for="article in currentNews">
@@ -36,7 +35,7 @@ export default {
   components: {
     Card
   },
-  props: ['gcResp'],
+  props: ['queryString'],
   data () {
     return {
       articles: [
@@ -58,40 +57,42 @@ export default {
     }
   },
   watch: {
-    gcResp (newResp) {
-      this.buildQuery(newResp)
+    queryString (newQueryString) {
+      this.currentNews = []
+      this.getNews(newQueryString, 0)
     }
   },
   methods: {
-    buildQuery (resp) {
-
-    },
-    testQuery () {
-      console.log('test')
+    getNews (queryString, page) {
       let that = this;
       jQuery.ajax({
         url: this.articleSearchUrl,
         data: {
           apikey: this.api,
-          q: "Ann Arbor"
+          q: queryString,
+          sort: 'newest',
+          page: page
         },
         crossDomain: true,
         xhrFields: {
           withCredentials: true
         },
         complete (response) {
-          that.parseResponse(response.responseJSON)
+          that.parseResponse(response.responseJSON, page)
         }
       })
     },
-    parseResponse (respJson) {
+    parseResponse (respJson, page) {
       console.log('ss')
       let snippets = respJson.response.docs
-      this.currentNews = []
       snippets.forEach( (snippet) => {
-        this.currentNews.push(snippet)
+        if(snippet.multimedia.length > 0) {
+          this.currentNews.push(snippet)
+        }
       })
-      console.log(this.currentNews)
+      // if(this.currentNews.length < 10) {
+      //   this.getNews(this.queryString, page + 1)
+      // }
     },
     getImageUrl (article) {
       let images = article.multimedia
