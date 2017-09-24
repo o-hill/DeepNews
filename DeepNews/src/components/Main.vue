@@ -56,4 +56,8 @@ export default {
   left: 10px;
 }
 
+body {
+  overflow: hidden;
+}
+
 </style>
