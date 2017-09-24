@@ -57,7 +57,7 @@ export default {
   position: absolute;
   z-index: 1;
   left: 10px;
-  top: 10px;
+  top: 15px;
   left: 10px;
 }
 

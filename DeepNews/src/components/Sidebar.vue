@@ -2,6 +2,9 @@
   <div id="sidebar-container">
     <v-container>
       <ul>
+        <v-card class="white mb-3 mr-3">
+          <v-card-text>News for: {{ queryString }}</v-card-text>
+        </v-card>
         <v-flex xs12 v-for="article in currentNews">
           <v-card class = "white mb-3 mr-3">
             <v-layout row wrap>
@@ -109,12 +112,14 @@ export default {
 
 <style>
 #sidebar-container {
+  position: absolute;
+  right: 10px;
   float: right;
   width: 33%;
   height: 100%;
-  background-color: #666666;
-  display: inline-block;
+  /*display: inline-block;*/
   overflow-y: scroll;
+  z-index: 1;
 }
 
 h6 {
