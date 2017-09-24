@@ -15,7 +15,6 @@ export default {
   props: ['gcResp'],
   data () {
     return {
-<<<<<<< HEAD
       currentNews: {},
       articles: [
         {
@@ -27,9 +26,6 @@ export default {
           headline: "rock climbing"
         }
       ]
-=======
-      currentNews: []
->>>>>>> e4c3b77d78b65903acb8449424bb324af9445698
     }
   },
   watch: {
