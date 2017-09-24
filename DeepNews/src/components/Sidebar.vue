@@ -3,7 +3,7 @@
     <v-container>
       <ul>
         <v-card class="white mb-3 mr-3">
-          <v-card-text>News for: {{ queryString }}</v-card-text>
+          <v-card-text v-if='queryString'>News for: {{ queryString }}</v-card-text>
         </v-card>
         <v-flex xs12 v-for="article in currentNews">
           <v-card class = "white mb-3 mr-3">
@@ -18,7 +18,7 @@
                   <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a>
               </v-card-text>
               <v-card-text class="grey--text">
-                <div id="arttext">{{article.snippet}}</div>
+                <div id="arttext">{{ article.snippet }}</div>
               </v-card-text>
               <!-- </v-flex> -->
             </v-layout>
