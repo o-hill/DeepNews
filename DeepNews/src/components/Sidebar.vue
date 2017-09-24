@@ -89,9 +89,10 @@ export default {
       console.log('ss')
       let snippets = respJson.response.docs
       snippets.forEach( (snippet) => {
-        if(snippet.multimedia.length > 0) {
-          this.currentNews.push(snippet)
-        }
+        this.currentNews.push(snippet)
+        // if(snippet.multimedia.length > 0) {
+        //   this.currentNews.push(snippet)
+        // }
       })
       // if(this.currentNews.length < 10) {
       //   this.getNews(this.queryString, page + 1)
