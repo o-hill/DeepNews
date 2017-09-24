@@ -17,9 +17,11 @@ api = Api(app)
 valid_headers = ['Content-Type', 'Access-Control-Allow-Origin', '*']
 cors = CORS(app, allow_headers=valid_headers)
 
-db = connect_to_database()
+#db = connect_to_database()
 
-
+@app.route('/')
+def hello_world():
+    return "Hello World!"
 
 
 
