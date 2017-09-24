@@ -2,8 +2,11 @@
   <gmap-map
     :center="center"
     ref="map"
-    :zoom="7"
-    :options="{styles: styles}"
+    :zoom="8"
+    :options="{styles: styles,
+      disableDefaultUI: true,
+      mapTypeId: 'terrain',
+      zoomControl: true}"
     @dragend="mapViewChanged"
     @tilesloaded="mapIsLoaded">
   </gmap-map>
@@ -27,12 +30,7 @@ export default {
     props: ['currentLocation'],
     data () {
       return {
-        center: {lat: 10.0, lng: 10.0},
-        markers: [{
-          position: {lat: 10.0, lng: 10.0}
-        }, {
-          position: {lat: 11.0, lng: 11.0}
-        }],
+        center: {lat: 42.279594, lng: -83.732124},
         styles: [
                   {
                     "elementType": "geometry",
@@ -358,7 +356,6 @@ export default {
         this.mapObject = this.$refs.map.$mapObject
       },
       mapViewChanged () {
-        this.panToLocation(10, 0)
       },
       panToLocation (latlng) {
         this.mapObject.panTo(latlng)
