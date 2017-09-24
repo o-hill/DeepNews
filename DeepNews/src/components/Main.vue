@@ -9,12 +9,35 @@
     <v-icon class="mr-3">search</v-icon>
     <v-spacer></v-spacer>
       <gmap-autocomplete @place_changed="update_view" width=100px></gmap-autocomplete>
+      <v-flex xs12 sm6>
+      <v-dialog
+          persistent
+          v-model="modal"
+          lazy
+          full-width>
+          <v-text-field
+            slot="activator"
+            label="After"
+            v-model="date"
+            prepend-icon="event"
+            readonly></v-text-field>
+          <v-date-picker v-model="date" scrollable dark>
+            <template scope="{ save, cancel }">
+              <v-card-actions>
+                <v-btn flat primary @click.native="cancel()">Cancel</v-btn>
+                <v-btn flat primary @click.native="save()">Save</v-btn>
+              </v-card-actions>
+            </template>
+          </v-date-picker>
+        </v-dialog>
+        </v-flex>
     </v-toolbar>
     <google-map
       :current-location="currentLocation">
     </google-map>
     <sidebar
-      :query-string="queryString"></sidebar>
+      :query-string="queryString"
+      :after-date="date"></sidebar>
   </div>
 </template>
 
@@ -35,7 +58,10 @@ export default {
       currentLocation: {},
       queryString: '',
       reverseGeocodeUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
-      mapsKey: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g'
+      mapsKey: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g',
+      date: this.getStartDate(),
+      menu: false,
+      modal: false,
     }
   },
   methods: {
@@ -68,6 +94,23 @@ export default {
         }
       }
       return address_components[0]
+    },
+    getStartDate() {
+      let today = new Date()
+      let dd = today.getDate();
+
+      let mm = today.getMonth();
+      let yyyy = today.getFullYear();
+      if(dd<10) {
+        dd='0'+dd;
+      }
+      if(mm == 0) {
+        mm = 12
+      }
+      if(mm<10) {
+        mm='0'+mm;
+      }
+      return yyyy+'-'+mm+'-'+dd;
     }
   }
 }
@@ -82,21 +125,48 @@ export default {
   right: 0;
 }
 
+.dialog__container {
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: 10px;
+  width: 125px;
+}
+
 #bar {
   position: absolute;
   z-index: 1;
   left: 10px;
   top: 20px;
   left: 10px;
-  width: 300px;
+  width: 410px;
+  height: 60px;
+}
+
+#bar label {
+  color: grey;
 }
 
 body {
   overflow: hidden;
 }
 
+.mr-3 {
+  margin-top: 15px;
+}
+
+.picker__body {
+  background-color: white;
+  color: black;
+}
+
+.card__actions {
+  background-color: white;
+}
+
 input[type=text] {
-  width: 225px;
+  margin-top: 20px;
+  font-size: 16px;
+  width: 200px;
 }
 
 </style>

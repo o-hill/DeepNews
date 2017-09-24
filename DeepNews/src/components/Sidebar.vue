@@ -9,16 +9,14 @@
           <v-card class = "white mb-3 mr-3">
             <v-layout row wrap>
               <!-- <v-flex xs5> -->
-                <v-card-media>
+                <v-card-media v-if="getImageUrl(article)">
                   <img :src = "getImageUrl(article)" height = 250px width=160px>
                 </v-card-media>
               <!-- </v-flex> -->
               <!-- <v-flex xs7> -->
               <v-card-text>
-                  <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a>
-              </v-card-text>
-              <v-card-text class="grey--text">
-                <div id="arttext">{{ article.snippet }}</div>
+                  <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a><br></br>
+                  <div id="arttext">{{article.snippet}}</div>
               </v-card-text>
               <!-- </v-flex> -->
             </v-layout>
@@ -38,7 +36,7 @@ export default {
   components: {
     Card
   },
-  props: ['queryString'],
+  props: ['queryString', 'afterDate'],
   data () {
     return {
       articles: [
@@ -73,6 +71,7 @@ export default {
         data: {
           apikey: this.api,
           q: queryString,
+          begin_date: that.formatDate(that.afterDate),
           sort: 'relevance',
           page: page
         },
@@ -105,6 +104,10 @@ export default {
           return "https://www.nytimes.com/" + images[i].url
         }
       }
+      return ""
+    },
+    formatDate (date) {
+      return date.replace(/-/g, '')
     }
   }
 }
@@ -133,6 +136,7 @@ h6:hover {
 }
 
 #arttext {
+  color: grey;
   text-align: left;
   line-height: 120%;
   vertical-align: top;
