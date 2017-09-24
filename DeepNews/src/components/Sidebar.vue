@@ -2,21 +2,23 @@
   <div id="sidebar-container">
     <v-container>
       <v-for="article in articles">
-        <v-card>
-        </v-card>
+        <card></card>
       </v-for>
     </v-container>
   </div>
 </template>
 
 <script>
+import Card from './Card.vue'
+
 export default {
   name: 'sidebar',
+  components: {
+    Card
+  },
   props: ['gcResp'],
   data () {
     return {
-<<<<<<< HEAD
-      currentNews: {},
       articles: [
         {
           text: "HelloWorld!",
@@ -26,10 +28,8 @@ export default {
           text: "rocks are cool",
           headline: "rock climbing"
         }
-      ]
-=======
+      ],
       currentNews: []
->>>>>>> e4c3b77d78b65903acb8449424bb324af9445698
     }
   },
   watch: {
