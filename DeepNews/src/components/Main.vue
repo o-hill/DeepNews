@@ -9,6 +9,7 @@
     <v-icon class="mr-3">search</v-icon>
     <v-spacer></v-spacer>
       <gmap-autocomplete @place_changed="update_view" width=100px></gmap-autocomplete>
+      <v-flex xs12 sm6>
       <v-dialog
           persistent
           v-model="modal"
@@ -17,10 +18,10 @@
           <v-text-field
             slot="activator"
             label="After"
-            v-model="e3"
+            v-model="date"
             prepend-icon="event"
             readonly></v-text-field>
-          <v-date-picker v-model="e3" scrollable >
+          <v-date-picker v-model="date" scrollable dark>
             <template scope="{ save, cancel }">
               <v-card-actions>
                 <v-btn flat primary @click.native="cancel()">Cancel</v-btn>
@@ -29,6 +30,7 @@
             </template>
           </v-date-picker>
         </v-dialog>
+        </v-flex>
     </v-toolbar>
     <google-map
       :current-location="currentLocation">
@@ -56,7 +58,7 @@ export default {
       queryString: '',
       reverseGeocodeUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
       mapsKey: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g',
-      e3: null,
+      date: null,
       menu: false,
       modal: false,
     }
@@ -132,6 +134,15 @@ body {
 
 .mr-3 {
   margin-top: 15px;
+}
+
+.picker__body {
+  background-color: white;
+  color: black;
+}
+
+.card__actions {
+  background-color: white;
 }
 
 input[type=text] {
