@@ -36,7 +36,7 @@ export default {
   components: {
     Card
   },
-  props: ['queryString'],
+  props: ['queryString', 'afterDate'],
   data () {
     return {
       articles: [
@@ -71,6 +71,7 @@ export default {
         data: {
           apikey: this.api,
           q: queryString,
+          begin_date: that.formatDate(that.afterDate),
           sort: 'relevance',
           page: page
         },
@@ -104,6 +105,9 @@ export default {
         }
       }
       return ""
+    },
+    formatDate (date) {
+      return date.replace(/-/g, '')
     }
   }
 }

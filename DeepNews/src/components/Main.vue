@@ -36,7 +36,8 @@
       :current-location="currentLocation">
     </google-map>
     <sidebar
-      :query-string="queryString"></sidebar>
+      :query-string="queryString"
+      :after-date="date"></sidebar>
   </div>
 </template>
 
@@ -58,7 +59,7 @@ export default {
       queryString: '',
       reverseGeocodeUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
       mapsKey: 'AIzaSyBSa_bbW6dWRsmAtJYgIJ2tuUOgplc2-5g',
-      date: null,
+      date: this.getStartDate(),
       menu: false,
       modal: false,
     }
@@ -93,6 +94,23 @@ export default {
         }
       }
       return address_components[0]
+    },
+    getStartDate() {
+      let today = new Date()
+      let dd = today.getDate();
+
+      let mm = today.getMonth();
+      let yyyy = today.getFullYear();
+      if(dd<10) {
+        dd='0'+dd;
+      }
+      if(mm == 0) {
+        mm = 12
+      }
+      if(mm<10) {
+        mm='0'+mm;
+      }
+      return yyyy+'-'+mm+'-'+dd;
     }
   }
 }
