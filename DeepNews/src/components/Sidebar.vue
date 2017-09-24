@@ -1,6 +1,10 @@
 <template>
   <div id="sidebar-container">
     <v-container>
+      <v-for="article in articles">
+        <v-card>
+        </v-card>
+      </v-for>
     </v-container>
   </div>
 </template>
@@ -11,7 +15,17 @@ export default {
   props: ['gcResp'],
   data () {
     return {
-      currentNews: {}
+      currentNews: {},
+      articles: [
+        {
+          text: "HelloWorld!",
+          headline: "Computers"
+        },
+        {
+          text: "rocks are cool",
+          headline: "rock climbing"
+        }
+      ]
     }
   },
   watch: {
@@ -32,7 +46,7 @@ export default {
 #sidebar-container {
   width: 24%;
   height: 100%;
-  background-color: blue;
+  background-color: #888888;
   display: inline-block;
 }
 
