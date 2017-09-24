@@ -1,5 +1,5 @@
-from bson import ObjectId
 import re
+#from pymongo.objectid import ObjectId
 
 # Library for converting between python and javascript data objects.
 
@@ -16,11 +16,11 @@ def serialize(obj, key = None):
             new_dict[snake_to_camel(k)] = serialize(v, key = k)
         return new_dict
     else : # Check to see if the bare object needs special processing.
-        if (type(obj) is ObjectId) and (re.search(r'(_id)', key)):
+#        if (type(obj) is ObjectId) and (re.search(r'(_id)', key)):
             # Convert the ObjectID to a string so we can push through JSON.
-            return str(obj)
-        else:
-            return obj
+#            return str(obj)
+#        else:
+       return obj
         # if isinstance(obj, np.generic):
         #     return np.asscalar(obj)
 
@@ -40,11 +40,11 @@ def deserialize(obj, key = None):
             new_dict[nk] = deserialize(v, key = nk)
         return new_dict
     else:
-        if (type(obj) is str) and (re.search(r'(_id)', key)):
+ #       if (type(obj) is str) and (re.search(r'(_id)', key)):
             # Convert to an ObjectID for use in Mongo!
-            return ObjectId(obj)
-        else:
-            return obj
+ #           return ObjectId(obj)
+ #       else:
+      return obj
 
 
 # Functions for preserving naming conventions in the separate languages.

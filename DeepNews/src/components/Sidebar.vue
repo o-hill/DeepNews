@@ -49,6 +49,7 @@ export default {
         }
       ],
       show: false
+>>>>>>> 01b38ae7c4f496bbfcfc97f2c99c5238c48a6562
     }
   },
   watch: {
@@ -59,6 +60,15 @@ export default {
   methods: {
     buildQuery (resp) {
 
+    },
+    parseResponse (respJson) {
+      respObj = JSON.parse(respJson)
+      snippets = respObj.response.docs
+      this.currentNews = []
+      snippets.forEach( (snippet) => {
+        this.currentNews.push(snippet)
+      })
+      console.log(this.currentNews)
     }
   }
 }
@@ -69,7 +79,7 @@ export default {
 #sidebar-container {
   width: 24%;
   height: 100%;
-  background-color: grey;
+  background-color: #888888;
   display: inline-block;
   overflow-y: scroll;
 }
