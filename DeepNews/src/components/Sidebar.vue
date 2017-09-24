@@ -5,19 +5,19 @@
         <v-flex xs12 v-for="article in currentNews">
           <v-card class = "white mb-3 mr-3">
             <v-layout row wrap>
-              <v-flex xs4>
+              <!-- <v-flex xs5> -->
                 <v-card-media>
-                  <img :src = "getImageUrl(article)" height = 150px width=120px>
+                  <img :src = "getImageUrl(article)" height = 250px width=160px>
                 </v-card-media>
-              </v-flex>
-              <v-flex xs8>
+              <!-- </v-flex> -->
+              <!-- <v-flex xs7> -->
               <v-card-text>
                   <a :href="article.web_url" target="_blank"><h6>{{article.headline.main}}</h6></a>
               </v-card-text>
               <v-card-text class="grey--text">
                 <div id="arttext">{{article.snippet}}</div>
               </v-card-text>
-              </v-flex>
+              <!-- </v-flex> -->
             </v-layout>
           </v-card>
         </v-flex>
