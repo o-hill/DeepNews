@@ -346,6 +346,10 @@ export default {
     watch: {
       currentLocation (newLocation) {
         this.panToLocation(newLocation)
+        new this.google.maps.Marker({
+          position: newLocation,
+          map: this.mapObject
+        })
       }
     },
     methods: {
