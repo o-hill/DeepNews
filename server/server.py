@@ -34,7 +34,11 @@ class NewsQuery(Resource):
 
         return serialize(response)
 
+class TestJson(Resouce):
 
+    def get(self):
+        data = open('request.json', 'r').read()
+        return data
 
 
 
@@ -45,6 +49,7 @@ class NewsQuery(Resource):
 # Define API routes.
 
 api.add_resource(NewsQuery, '/query', methods = ['GET'])
+api.add_resource(TestJson, '/test', methods = ['GET'])
 
 
 
